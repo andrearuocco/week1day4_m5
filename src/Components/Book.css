@@ -18,3 +18,7 @@
 .bordoo {
     border-bottom: 2px solid black;
 }
+
+.selected {
+    border: 5px solid red !important;
+}
