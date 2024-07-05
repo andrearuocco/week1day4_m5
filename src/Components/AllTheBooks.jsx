@@ -2,7 +2,6 @@ import Row  from 'react-bootstrap/Row';
 import Book from './Book';
 import books from './data/history.json'
 import { Container } from 'react-bootstrap';
-import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import {useState} from 'react'
@@ -25,7 +24,7 @@ function AllTheBooks() {
                 <Form.Control
                     aria-label="Example text with button addon"
                     aria-describedby="basic-addon1"
-                    placeholder='ricerca i libri che preferisici'
+                    placeholder='ricerca i libri che preferisci'
                     onChange = {handleSearch}
                 />
             </InputGroup>

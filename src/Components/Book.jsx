@@ -1,6 +1,7 @@
 import {Card, Col} from 'react-bootstrap/';
 import './Book.css'
 import {useState} from 'react'
+import AddComment from './AddComment';
 function Book({book}) {
 
     const [selected, setSelected] = useState(false)
@@ -16,6 +17,7 @@ function Book({book}) {
           <Card.Text className='bordoo'>
             {book.price}
           </Card.Text>
+          <AddComment />
         </Card.Body>
       </Col>
     );
