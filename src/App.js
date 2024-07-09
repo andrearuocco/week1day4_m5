@@ -1,9 +1,20 @@
 import './App.css';
-import Body from './Components/Body';
+import Container from 'react-bootstrap/Container';
+import MyNav from './Components/MyNav';
+import MyFooter from './Components/MyFooter';
+import Welcome from './Components/Welcome';
+import AllTheBooks from './Components/AllTheBooks';
 
 function App() {
   return (
-    <Body></Body>
+    <>
+      <Container>
+      <MyNav />
+      </Container>
+      <Welcome />
+      <AllTheBooks />
+      <MyFooter />
+    </>
   );
 }
 
