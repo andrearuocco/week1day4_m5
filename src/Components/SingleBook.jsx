@@ -1,5 +1,5 @@
 import {Card, Col} from 'react-bootstrap/';
-import './Book.css'
+import './SingleBook.css'
 import {useState} from 'react'
 import CommentArea from './CommentArea';
 function Book({book}) {
