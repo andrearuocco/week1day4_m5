@@ -1,8 +1,8 @@
 import SingleComment from "./SingleComment"
 
-function CommentList({comments}) {
+function CommentList({comments, loadComments}) {
     return(
-        <>{comments.map(comment => <SingleComment key={comment._id} comment={comment} />)}</>  
+        <>{comments.map(comment => <SingleComment key={comment._id} comment={comment} loadComments={loadComments}/>)}</>  
     )
 }
 

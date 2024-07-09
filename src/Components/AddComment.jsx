@@ -3,32 +3,45 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import { Button } from 'react-bootstrap';
 import { useState } from 'react';
 
-function AddComment({asin}) {
-    const [formValue, setformValue] = useState({
+function AddComment({asin, loadComments}) {
+    const initialFormState = {
         rate: "",
         comment: "",
         elementId: asin 
-    })
+    }
+    const [formValue, setformValue] = useState(initialFormState)
+
     const handleChange = (ev => {
         setformValue({...formValue, [ev.target.name]:ev.target.value})
     })
     const handleSave = async () => {
-        const response = await fetch(`https://striveschool-api.herokuapp.com/api/comments/`,
-            {
-                headers: {
-                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Njg5MWMxNzJiNWMyMDAwMTUyNzFmYjQiLCJpYXQiOjE3MjAyNjE2NTUsImV4cCI6MTcyMTQ3MTI1NX0.g2rDStXE1X97fb20GU7x7rOAa56qGgiB-FjyUF50kdU",
-                    "Content-Type": "application/json"
-                },
-                method: 'POST',
-            body: JSON.stringify(formValue)
-            }
-        )
+        try {
+            const response = await fetch(`https://striveschool-api.herokuapp.com/api/comments/`,
+                {
+                    headers: {
+                        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Njg5MWMxNzJiNWMyMDAwMTUyNzFmYjQiLCJpYXQiOjE3MjAyNjE2NTUsImV4cCI6MTcyMTQ3MTI1NX0.g2rDStXE1X97fb20GU7x7rOAa56qGgiB-FjyUF50kdU",
+                        "Content-Type": "application/json"
+                    },
+                    method: 'POST',
+                body: JSON.stringify(formValue)
+                }
+            )
+            if (response.ok) {
+                loadComments()
+                setformValue(initialFormState)
+                alert("Commento aggiunto")
+            } else { alert("Inserisci un rate da 1 a 5")}
+        }
+        catch(error){
+           alert("Riprova più tardi.")
+        }
+       
     }
     
     return (
         <InputGroup className='mt-4 d-flex flex-column justify-content-center'>
-            <Form.Control className='mb-3 w-100' type="number" min="1" max="5" name="rate" onChange={handleChange}/>
-            <Form.Control as="textarea" className='mb-3 w-100' aria-label="With textarea" name="comment" onChange={handleChange}/>
+            <Form.Control className='mb-3 w-100' type="number" min="1" max="5" name="rate" onChange={handleChange} value={formValue.rate}/>
+            <Form.Control as="textarea" className='mb-3 w-100' aria-label="With textarea" name="comment" onChange={handleChange} value={formValue.comment}/>
             <Button variant="dark" className='mb-3 text-white' onClick={handleSave}>Dark</Button>
         </InputGroup>
     )

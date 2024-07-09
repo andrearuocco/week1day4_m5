@@ -6,6 +6,7 @@ import Welcome from './Components/Welcome';
 import AllTheBooks from './Components/AllTheBooks';
 import books from './Components/data/history.json'
 import {useState} from 'react'
+import { ThemeContext } from './Components/Context';
 
 function App() {
   /* stato necessario per ricerca e function filter books */
@@ -20,14 +21,14 @@ function App() {
   }
   /* stato necessario per ricerca e function filter books */
   return (
-    <>
+    <ThemeContext.Provider> {/* ? value={theme} ? */}
       <Container>
       <MyNav handleSearch={handleSearch} /> {/* filter */}
       </Container>
       <Welcome />
       <AllTheBooks resultSearch={resultSearch} /> {/* array già filtrato da passare ad AllTheBooks.jsx come props */}
       <MyFooter />
-    </>
+    </ThemeContext.Provider>
   );
 }
 
