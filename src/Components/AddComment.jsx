@@ -21,7 +21,8 @@ function AddComment({asin}) {
                 },
                 method: 'POST',
             body: JSON.stringify(formValue)
-            })
+            }
+        )
     }
     
     return (
