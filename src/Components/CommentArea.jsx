@@ -17,8 +17,6 @@ function CommentArea({asin}) {
     useEffect(() => {loadComments()}, [])
     return (
         <div> <AddComment asin={asin}/> <CommentList comments={comments} /> </div>
-        
-        
     )
 }
 

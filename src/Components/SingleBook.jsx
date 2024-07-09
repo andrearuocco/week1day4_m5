@@ -2,7 +2,8 @@ import {Card, Col} from 'react-bootstrap/';
 import './SingleBook.css'
 import {useState} from 'react'
 import CommentArea from './CommentArea';
-function Book({book}) {
+
+function SingleBook({book}) {
 
     const [selected, setSelected] = useState(false)
     const handleSelected = () => {
@@ -21,6 +22,7 @@ function Book({book}) {
         </Card.Body>
       </Col>
     );
+
   }
   
-  export default Book;
+  export default SingleBook;

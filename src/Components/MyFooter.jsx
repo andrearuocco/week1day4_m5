@@ -1,4 +1,5 @@
 import './MyFooter.css'
+
 function MyFooter() {
     return (
         <div className="fixed-bottom br-20 bg-dark bg-gradient bord mx-auto my-auto d-flex justify-content-center">

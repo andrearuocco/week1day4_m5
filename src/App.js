@@ -8,6 +8,7 @@ import books from './Components/data/history.json'
 import {useState} from 'react'
 
 function App() {
+  /* stato necessario per ricerca e function filter books */
   const [search, setSearch] = useState('')
   const [resultSearch, setresultSearch] = useState(books)
   const handleSearch = (event) => {
@@ -17,13 +18,14 @@ function App() {
       })
       setresultSearch(resultTemp)
   }
+  /* stato necessario per ricerca e function filter books */
   return (
     <>
       <Container>
-      <MyNav handleSearch={handleSearch}/>
+      <MyNav handleSearch={handleSearch} /> {/* filter */}
       </Container>
       <Welcome />
-      <AllTheBooks resultSearch={resultSearch}/>
+      <AllTheBooks resultSearch={resultSearch} /> {/* array già filtrato da passare ad AllTheBooks.jsx come props */}
       <MyFooter />
     </>
   );
