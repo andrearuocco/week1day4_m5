@@ -18,7 +18,7 @@ function SingleBook({book}) {
           <Card.Text className='bordoo'>
             {book.price}
           </Card.Text>
-          {selected && <CommentArea asin={book.asin} />}
+          {/* {selected && <CommentArea asin={book.asin} />} FIRSTTASKVEN12LUG*/} 
         </Card.Body>
       </Col>
     );
