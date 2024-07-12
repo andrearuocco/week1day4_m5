@@ -1,10 +1,12 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { Form, InputGroup } from 'react-bootstrap';
+import { Form, InputGroup, Button } from 'react-bootstrap';
 import './MyNav.css'
+
 /* handleSearch passata come props */
-function MyNav({ handleSearch }) {
+function MyNav({ handleSearch}) {
+ 
     return (
 
         <Navbar expand="lg" className="mb-3 bg-black bg-gradient">
@@ -16,6 +18,7 @@ function MyNav({ handleSearch }) {
               <Nav.Link href="#" className="text-underline-none pe-3 text-white">Home</Nav.Link>
               <Nav.Link href="#" className="text-underline-none pe-3 text-white">About</Nav.Link>
               <Nav.Link href="#" className="text-underline-none pe-3 text-white">Browse</Nav.Link>
+              <Nav.Item class='me-4'><Button variant="success">Success</Button></Nav.Item>
               <Nav.Item>            
                 {/* barra di ricerca che precedentemente si trovava in AllTheBooks a cui serve handleSearch */}
                 <InputGroup className="mb-3 w-40">

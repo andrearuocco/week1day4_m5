@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, ListGroup, Form, InputGroup } from 'react-bootstrap';
 
 function SingleComment({comment, loadComments}) {
@@ -26,20 +26,32 @@ function SingleComment({comment, loadComments}) {
  
 };
 const [isEditing, setIsEditing] = useState(false)
-const initialFormEdit = {
+/* const initialFormEdit = {
   rate: comment.rate,
   comment: comment.comment,
   elementId: comment.elementId
-}
-const [formValue, setformValue] = useState(initialFormEdit)
+} */
+const [formValue, setformValue] = useState({})
 
 const editForm = () => {
   setIsEditing(!isEditing)
 }
+useEffect(()=>{
+  const initialFormValue = {
+    rate: comment.rate,
+    comment: comment.comment,
+    elementId: comment.elementId
+  }
+  setformValue(initialFormValue)
+},[comment])
  const handleEdit = async () => {
+  if(formValue.rata > 5 || formValue.rate < 1) {
+    alert("Inserisci un numero da 1 a 5")
+    return
+  }
+
   try {
     const response = await fetch(`https://striveschool-api.herokuapp.com/api/comments/${comment._id}`, {
-
       headers: {
         "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Njg5MWMxNzJiNWMyMDAwMTUyNzFmYjQiLCJpYXQiOjE3MjAyNjE2NTUsImV4cCI6MTcyMTQ3MTI1NX0.g2rDStXE1X97fb20GU7x7rOAa56qGgiB-FjyUF50kdU",
         "Content-Type": "application/json"
@@ -51,7 +63,7 @@ const editForm = () => {
       alert("Modificato corrrettamente")
       loadComments()
       setIsEditing(false)
-      setformValue(initialFormEdit)
+      //setformValue(initialFormEdit)
     }
     else {
       alert("Errore nella modifica")
