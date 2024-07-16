@@ -27,6 +27,13 @@ function App() {
     })
     setresultSearch(resultTemp)
   }
+
+  /* const resultAsin = () => {
+    books.map(book => {
+       book.asin 
+    })
+  }  */
+ 
   /* stato necessario per ricerca e function filter books */
   return (
     <ThemeContextProvider>
@@ -41,7 +48,7 @@ function App() {
             <Routes>
 
               <Route path="/" element={<AllTheBooks resultSearch={resultSearch} />} />
-              <Route path="/bookDetails" element={<BookDetails />} />
+              <Route path="/bookDetails/:asin" element={<BookDetails />} />
               <Route path="/nonTrovato" element={<NotFound />} />
 
             </Routes>
