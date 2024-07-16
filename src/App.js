@@ -33,7 +33,17 @@ function App() {
        book.asin 
     })
   }  */
- 
+/*     const [selected, setSelected] = useState(null)
+    const handleSelected = (asin) => {
+        if (selected === asin) {
+            setSelected(null)
+        }
+        else {
+            setSelected(asin)
+        }
+   
+      } 
+  */
   /* stato necessario per ricerca e function filter books */
   return (
     <ThemeContextProvider>
@@ -47,7 +57,7 @@ function App() {
           <Row>
             <Routes>
 
-              <Route path="/" element={<AllTheBooks resultSearch={resultSearch} />} />
+              <Route path="/" element={<AllTheBooks resultSearch={resultSearch} /* selected={selected} handleSelected={handleSelected} */ />} />
               <Route path="/bookDetails/:asin" element={<BookDetails />} />
               <Route path="/nonTrovato" element={<NotFound />} />
 

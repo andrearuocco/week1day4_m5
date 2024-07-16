@@ -18,6 +18,7 @@ function AllTheBooks({ resultSearch }) {
         }
     */
     /* logica elevata in App.jsx */
+
     const [selected, setSelected] = useState(null)
     const handleSelected = (asin) => {
         if (selected === asin) {
@@ -28,7 +29,6 @@ function AllTheBooks({ resultSearch }) {
         }
    
       } 
-
     return (
         <Container>
             <Row>
