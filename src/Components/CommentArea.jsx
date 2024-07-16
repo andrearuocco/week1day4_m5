@@ -14,7 +14,7 @@ function CommentArea({asin}) {
         const data = await response.json()
         setComments(data)
     }
-    useEffect(() => {loadComments()}, [])
+    useEffect(() => {loadComments()}, [asin])
     return (
         <div> <AddComment asin={asin} loadComments={loadComments}/> <CommentList comments={comments} loadComments={loadComments}/> </div>
     )

@@ -3,24 +3,27 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Form, InputGroup, Button } from 'react-bootstrap';
 import './MyNav.css'
+import { useContext } from 'react';
+import { ThemeContext } from './ThemeContextProvider';
 
 /* handleSearch passata come props */
 function MyNav({ handleSearch}) {
- 
+    const {theme, toggleTheme} = useContext (ThemeContext)
     return (
 
-        <Navbar expand="lg" className="mb-3 bg-black bg-gradient">
+        <Navbar expand="lg" className={theme === "light" ? "mb-3 text-black" : "mb-3 bg-black bg-gradient text-white"}>
         <Container>
           <Navbar.Brand href="#" className="text-underline-none pe-3 text-white-50">React-Bootstrap</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#" className="text-underline-none pe-3 text-white">Home</Nav.Link>
-              <Nav.Link href="#" className="text-underline-none pe-3 text-white">About</Nav.Link>
-              <Nav.Link href="#" className="text-underline-none pe-3 text-white">Browse</Nav.Link>
-              <Nav.Item class='me-4'><Button variant="success">Success</Button></Nav.Item>
+              {/* modificare con as */}
+              <Nav.Item href="#" className="text-underline-none pe-3">Home</Nav.Item>
+              <Nav.Item href="#" className="text-underline-none pe-3">About</Nav.Item>
+              <Nav.Item href="#" className="text-underline-none pe-3">Browse</Nav.Item>
+              <Nav.Item class='me-4'><Button variant="success" onClick={() => {toggleTheme()}}>Set Theme</Button></Nav.Item>
               <Nav.Item>            
-                {/* barra di ricerca che precedentemente si trovava in AllTheBooks a cui serve handleSearch */}
+                {/* barra di ricerca che precedentemente si trovava in AllTheBooks a cui serve handleSearch, modificare con as */}
                 <InputGroup className="mb-3 w-40">
                   <Form.Control
                     aria-label="Example text with button addon"
