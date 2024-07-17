@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import AddComment from "./AddComment"
 import CommentList from "./CommentList"
+import './CommentArea.css'
 
 function CommentArea({asin}) {
     const [comments, setComments] = useState([])
@@ -16,7 +17,7 @@ function CommentArea({asin}) {
     }
     useEffect(() => {loadComments()}, [asin])
     return (
-        <div> <AddComment asin={asin} loadComments={loadComments}/> <CommentList comments={comments} loadComments={loadComments}/> </div>
+        <div className="sticky-top p-3 bor-com-ar"> <AddComment asin={asin} loadComments={loadComments}/> <CommentList comments={comments} loadComments={loadComments}/> </div>
     )
 }
 

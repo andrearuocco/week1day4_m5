@@ -2,7 +2,7 @@ import './App.css';
 import { Container, Row, Col } from 'react-bootstrap/';
 import MyNav from './Components/MyNav';
 import MyFooter from './Components/MyFooter';
-import Welcome from './Components/Welcome';
+
 import AllTheBooks from './Components/pages/AllTheBooks';
 import books from './Components/data/history.json'
 import { useContext, useState } from 'react'
@@ -51,9 +51,9 @@ function App() {
         <Container>
           <MyNav handleSearch={handleSearch} />
         </Container>
-        <Welcome />
+        
 
-        <Container>
+        <Container fluid>
           <Row>
             <Routes>
 

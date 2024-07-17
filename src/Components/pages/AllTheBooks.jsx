@@ -1,8 +1,10 @@
 import Row  from 'react-bootstrap/Row';
 import { Container, Col } from 'react-bootstrap';
+import Welcome from '../Welcome';
 import SingleBook from '../SingleBook'
 import CommentArea from '../CommentArea'; 
 import { useState } from 'react';
+
 
 function AllTheBooks({ resultSearch }) {
     /* logica elevata in App.jsx */
@@ -30,12 +32,13 @@ function AllTheBooks({ resultSearch }) {
    
       } 
     return (
-        <Container>
+        <Container fluid>
+            <Welcome />
             <Row>
-                <Col md={9}>
+                <Col md={8}>
                     <Row>{resultSearch.map(book => <SingleBook key={book.asin} book={book} selected={selected} handleSelected={handleSelected} />)}</Row>
                 </Col>
-                <Col md={3}>
+                <Col md={4}>
                     {selected && <CommentArea asin={selected} />}
                 </Col>
             </Row>

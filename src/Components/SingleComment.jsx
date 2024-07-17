@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Button, ListGroup, Form, InputGroup } from 'react-bootstrap';
+import './SingleComment.css'
 
 function SingleComment({comment, loadComments}) {
   const handleDelete = async () => {
@@ -78,16 +79,18 @@ const handleChange = (ev => {
   setformValue({...formValue, [ev.target.name]:ev.target.value})
 })
     return(    
-      <ListGroup>
-
-     
-        <ListGroup.Item>{comment.author}  </ListGroup.Item>
-        <ListGroup.Item>{isEditing? <Form.Control className='mb-3 w-100' type="number" min="1" max="5" name="rate" onChange={handleChange} value={formValue.rate}/>:comment.rate}</ListGroup.Item>  
-        <ListGroup.Item>{isEditing? <Form.Control as="textarea" className='mb-3 w-100' aria-label="With textarea" name="comment" onChange={handleChange} value={formValue.comment}/>:comment.comment}</ListGroup.Item>
-        <ListGroup.Item><i class="fa-solid fa-trash" onClick={handleDelete}></i></ListGroup.Item>
-        <ListGroup.Item> <i class="fa-solid fa-pen" onClick={() => {isEditing?handleEdit():editForm()}}></i></ListGroup.Item>
-
-
+      <ListGroup className='listgroup'>
+        <ListGroup.Item className='d-flex justify-content-between'>
+          <ListGroup.Item>{comment.author}  </ListGroup.Item>
+          <ListGroup.Item>{isEditing ? <Form.Control className='mb-3 w-100' type="number" min="1" max="5" name="rate" onChange={handleChange} value={formValue.rate} /> : comment.rate}</ListGroup.Item>  
+        </ListGroup.Item>
+        <ListGroup.Item className='d-flex justify-content-between bor-bot'>     
+          <ListGroup.Item>{isEditing ? <Form.Control as="textarea" className='mb-3 w-100' aria-label="With textarea" name="comment" onChange={handleChange} value={formValue.comment} /> : comment.comment}</ListGroup.Item>
+          <ListGroup.Item className='d-flex'>
+            <ListGroup.Item><i class="fa-solid fa-trash" onClick={handleDelete}></i></ListGroup.Item>
+            <ListGroup.Item> <i class="fa-solid fa-pen" onClick={() => { isEditing ? handleEdit() : editForm() }}></i></ListGroup.Item>
+          </ListGroup.Item>
+        </ListGroup.Item>
       </ListGroup>
     )
 }

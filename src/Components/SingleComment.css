@@ -1,0 +1,9 @@
+.list-group-item {
+    border: 0 !important;
+}
+
+.bor-bot {
+    border-bottom: 1px solid red !important;
+    border-radius: 0 !important;
+}
+

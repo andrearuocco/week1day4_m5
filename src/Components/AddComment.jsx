@@ -2,6 +2,7 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { Alert, Button } from 'react-bootstrap';
 import { useState } from 'react';
+import './AddComment.css'
 
 function AddComment({asin, loadComments}) {
     const initialFormState = {
@@ -42,10 +43,11 @@ function AddComment({asin, loadComments}) {
     }
     
     return (<> {alert && <Alert key={alert.success?"success":"danger"} variant={alert.success?"success":"danger"}>{alert.message}</Alert>} 
-        <InputGroup className='mt-4 d-flex flex-column justify-content-center'>
-            <Form.Control className='mb-3 w-100' type="number" min="1" max="5" name="rate" onChange={handleChange} value={formValue.rate}/>
-            <Form.Control as="textarea" className='mb-3 w-100' aria-label="With textarea" name="comment" onChange={handleChange} value={formValue.comment}/>
-            <Button variant="dark" className='mb-3 text-white' onClick={handleSave}>Dark</Button>
+        <InputGroup className='mt-2 d-flex flex-column justify-content-center'>
+            <h3 className='text-center'>Inserisci un commento</h3>
+            <Form.Control className='bora-20 mb-3 w-100' type="number" min="1" max="5" name="rate" onChange={handleChange} value={formValue.rate} placeholder='RATE'/>
+            <Form.Control as="textarea" className='mb-3 w-100' aria-label="With textarea" name="comment" onChange={handleChange} value={formValue.comment} placeholder="scrivi qui il tuo commento..."/>
+            <Button variant="success" className='button w-50 mb-3 text-white' onClick={handleSave}>Aggiungi il tuo commento</Button>
         </InputGroup></>
         
     )

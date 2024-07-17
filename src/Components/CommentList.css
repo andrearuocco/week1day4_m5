@@ -1,0 +1,22 @@
+.commentList {
+    max-height: 50vh;
+    overflow-y: auto;
+}
+
+.commentList::-webkit-scrollbar {
+    width: 10px;
+}
+
+.commentList::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.commentList::-webkit-scrollbar-thumb {
+    background: green;
+    border-radius: 10px;
+}
+
+.commentList::-webkit-scrollbar-thumb:hover {
+    background: red;
+}
