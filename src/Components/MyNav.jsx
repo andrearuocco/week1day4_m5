@@ -11,7 +11,7 @@ function MyNav({ handleSearch}) {
     const {theme, toggleTheme} = useContext (ThemeContext)
     return (
 
-        <Navbar expand="lg" className={theme === "light" ? "mb-3 text-black" : "mb-3 bg-black bg-gradient text-white"}>
+        <Navbar expand="lg" className={theme === "light" ? "mt-1 bo-gr mb-3 text-black" : "mb-3 bg-black bg-gradient text-white"}>
         <Container className='align-items-baseline'>
           <Navbar.Brand href="#" className={theme === "dark" ? "text-underline-none pe-3 text-white-50" : "text-underline-none pe-3 text-black-50"}>React-Bootstrap</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />

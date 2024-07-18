@@ -66,7 +66,7 @@ function App() {
           </Row>
         </Container>
 
-        <MyFooter />
+{/*         <MyFooter /> */}
 
       </BrowserRouter>
     </ThemeContextProvider>
