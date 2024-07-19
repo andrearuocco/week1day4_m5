@@ -15,7 +15,7 @@ function SingleBook({book, selected, handleSelected}) {/*
 /*     if(theme === 'light')  */
     return (
 
-        <Col xs={12} sm={6} md={4} lg={3} className="mb-3"/* {theme === 'light' ? 'mb-3' : 'mb-3 bg-dark-50 text-white'} */>
+        <Col xs={12} sm={6} md={4} lg={3} className="mb-3" /* {theme === 'light' ? 'mb-3' : 'mb-3 bg-dark-50 text-white'} */>
         <Card.Img variant="top" src={book.img} style={{ height: '18rem' }} className={selected === book.asin ? 'br-10 selected':'br-10'} onClick={() => {handleSelected(book.asin)}} />
         <Card.Body className="position-relative">
           <Card.Title className='title'>{book.title}</Card.Title>
