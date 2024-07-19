@@ -36,7 +36,7 @@ function AllTheBooks({ resultSearch }) {
             <Welcome />
             <Row>
                 <Col md={8}>
-                    <Row>{resultSearch.map(book => <SingleBook key={book.asin} data-testid='manycard' book={book} selected={selected} handleSelected={handleSelected} />)}</Row>
+                    <Row>{resultSearch.map(book => <SingleBook key={book.asin} /* data-testid='manycard' */ book={book} selected={selected} handleSelected={handleSelected} />)}</Row>
                 </Col>
                 <Col md={4}>
                     {selected && <CommentArea asin={selected} />}

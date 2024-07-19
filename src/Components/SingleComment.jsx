@@ -79,7 +79,7 @@ const handleChange = (ev => {
   setformValue({...formValue, [ev.target.name]:ev.target.value})
 })
     return(    
-      <ListGroup className='listgroup'>
+      <ListGroup data-testid='comment' className='listgroup'>
         <ListGroup.Item className='d-flex justify-content-between'>
           <ListGroup.Item>{comment.author}  </ListGroup.Item>
           <ListGroup.Item>{isEditing ? <Form.Control className='mb-3 w-100' type="number" min="1" max="5" name="rate" onChange={handleChange} value={formValue.rate} /> : comment.rate}</ListGroup.Item>  
