@@ -9,8 +9,7 @@ import { ThemeContext } from './ThemeContextProvider';
 
 /* handleSearch passata come props */
 function MyNav({ handleSearch}) {
-  const [selectedGenre, setSelectedGenre] = useState('History')
-
+  
 
     const {theme, toggleTheme} = useContext (ThemeContext)
     return (
