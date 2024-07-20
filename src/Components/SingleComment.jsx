@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { Button, ListGroup, Form, InputGroup, Alert, Modal } from 'react-bootstrap';
 import './SingleComment.css'
 
+
+
 function SingleComment({comment, loadComments}) {
  /*  const [show, setShow] = useState(true); */
  

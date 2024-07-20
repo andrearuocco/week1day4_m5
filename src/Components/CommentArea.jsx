@@ -26,7 +26,7 @@ function CommentArea({asin}) {
     }
     useEffect(() => {loadComments()}, [asin])
     return (
-        <div className="sticky-top p-3 bor-com-ar"> <AddComment asin={asin} loadComments={loadComments}/> <CommentList comments={comments} loadComments={loadComments} loading={loading}/> </div>
+        <div className="sticky-top p-3 bor-com-ar bg-white"> <AddComment asin={asin} loadComments={loadComments}/> <CommentList comments={comments} loadComments={loadComments} loading={loading}/> </div>
     )
 }
 

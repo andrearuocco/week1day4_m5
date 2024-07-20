@@ -6,6 +6,7 @@ import romance from './data/romance.json'
 import scifi from './data/scifi.json'
 import { Form } from 'react-bootstrap/';
 import {  useState } from 'react'
+import { Button } from 'bootstrap'
 
 function MyFooter({setBooks}) {
     const [selectedGenre, setSelectedGenre] = useState('History')
@@ -42,13 +43,15 @@ function MyFooter({setBooks}) {
                 <li><i className="fa-solid fa-arrow-right p-3"></i></li>
                 <li><i className="fa-solid fa-share-nodes p-3"></i></li>
             </ul>
-        </div> */
+        </div> 
+            */
+      
     return (
      
   
         <Form.Select aria-label="Default select example" onChange={handleGenreChange}
-            className='fixed-bottom'>
-                  <option value="History" >History</option>
+            className='fixed-bottom d-flex'>
+               <option value="History" >History</option>
                   <option value="Fantasy" >Fantasy</option>
                   <option value="Horror" >Horror</option>
                   <option value="Romance" >Romance</option>

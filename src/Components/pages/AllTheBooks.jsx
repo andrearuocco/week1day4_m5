@@ -4,9 +4,12 @@ import Welcome from '../Welcome';
 import SingleBook from '../SingleBook'
 import CommentArea from '../CommentArea'; 
 import { useState } from 'react';
+import { useContext } from 'react';
+import { ThemeContext } from '../ThemeContextProvider';
 
 
 function AllTheBooks({ resultSearch }) {
+    const {theme} = useContext (ThemeContext)
     /* logica elevata in App.jsx */
     /* 
         const [search, setSearch] = useState('')
@@ -35,10 +38,10 @@ function AllTheBooks({ resultSearch }) {
         <Container fluid>
             <Welcome />
             <Row>
-                <Col md={8}>
+                <Col md={8} className={theme === 'light' ? '' : 'bg-dark bg-gradient'}>
                     <Row>{resultSearch.map(book => <SingleBook key={book.asin} /* data-testid='manycard' */ book={book} selected={selected} handleSelected={handleSelected} />)}</Row>
                 </Col>
-                <Col md={4}>
+                <Col md={4} className={theme === 'light' ? '' : 'bg-dark bg-gradient'}>
                     {selected && <CommentArea asin={selected} />}
                 </Col>
             </Row>

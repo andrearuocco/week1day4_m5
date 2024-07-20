@@ -70,7 +70,7 @@ function App() {
             <Routes>
 
               <Route path="/" element={<AllTheBooks resultSearch={resultSearch} /* selected={selected} handleSelected={handleSelected} */ />} />
-              <Route path="/bookDetails/:asin" element={<BookDetails />} />
+              <Route path="/bookDetails/:asin" element={<BookDetails books={books} />} />
               <Route path="/nonTrovato" element={<NotFound />} />
 
             </Routes>
