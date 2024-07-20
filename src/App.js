@@ -4,8 +4,11 @@ import MyNav from './Components/MyNav';
 import MyFooter from './Components/MyFooter';
 
 import AllTheBooks from './Components/pages/AllTheBooks';
-import books from './Components/data/history.json'
-import { useContext, useState } from 'react'
+
+import history from './Components/data/history.json'
+
+
+import { useEffect, useState } from 'react'
 import NotFound from './Components/pages/NotFound';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import BookDetails from './Components/pages/BookDetails';
@@ -13,12 +16,15 @@ import { ThemeContext, ThemeContextProvider } from './Components/ThemeContextPro
 
 
 function App() {
+  
+  const [books, setBooks] = useState(history)
   /* stato necessario per ricerca e function filter books */
   const [search, setSearch] = useState('')
 
+
 /*   const {theme} = useContext(ThemeContext)
   console.log(theme) */
-
+ 
   const [resultSearch, setresultSearch] = useState(books)
   const handleSearch = (event) => {
     setSearch(event.target.value)
@@ -45,11 +51,12 @@ function App() {
       } 
   */
   /* stato necessario per ricerca e function filter books */
+
   return (
     <ThemeContextProvider>
       <BrowserRouter>
         <Container>
-          <MyNav handleSearch={handleSearch} />
+          <MyNav handleSearch={handleSearch} setBooks={setBooks}/>
         </Container>
         
 
