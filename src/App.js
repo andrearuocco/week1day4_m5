@@ -5,10 +5,10 @@ import MyFooter from './Components/MyFooter';
 
 import AllTheBooks from './Components/pages/AllTheBooks';
 
-import history from './Components/data/history.json'
+import books from './Components/data/history.json'
 
 
-import { useEffect, useState } from 'react'
+import {  useState } from 'react'
 import NotFound from './Components/pages/NotFound';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import BookDetails from './Components/pages/BookDetails';
@@ -16,8 +16,7 @@ import { ThemeContext, ThemeContextProvider } from './Components/ThemeContextPro
 
 
 function App() {
-  
-  const [books, setBooks] = useState(history)
+ 
   /* stato necessario per ricerca e function filter books */
   const [search, setSearch] = useState('')
 
@@ -56,7 +55,7 @@ function App() {
     <ThemeContextProvider>
       <BrowserRouter>
         <Container>
-          <MyNav handleSearch={handleSearch} setBooks={setBooks}/>
+          <MyNav handleSearch={handleSearch} />
         </Container>
         
 

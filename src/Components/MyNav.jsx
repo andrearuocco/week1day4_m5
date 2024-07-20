@@ -5,41 +5,12 @@ import { Form, InputGroup, Button } from 'react-bootstrap';
 import './MyNav.css'
 import { useContext, useState } from 'react';
 import { ThemeContext } from './ThemeContextProvider';
-import history from './data/history.json'
-import fantasy from './data/fantasy.json'
-import horror from './data/horror.json'
-import romance from './data/romance.json'
-import scifi from './data/scifi.json'
+
 
 /* handleSearch passata come props */
-function MyNav({ handleSearch, setBooks }) {
+function MyNav({ handleSearch}) {
   const [selectedGenre, setSelectedGenre] = useState('History')
-  const handleGenreChange = (e) => {
-    const genre = e.target.value
-    setSelectedGenre(genre)
-    switch (genre) {
-        case 'History': 
-            
-            setBooks(history)
-            break
-        case 'Fantasy': 
-      
-            setBooks(fantasy)
-            break
-        case 'Horror': 
-            setBooks(horror)
-            break
-        case 'Romance': 
-            setBooks(romance)
-            break
-        case 'Sci-Fi': 
-            setBooks(scifi)
-            break
-        default:
-            setBooks(history)
-            break
-    }
-}
+
 
     const {theme, toggleTheme} = useContext (ThemeContext)
     return (
@@ -68,16 +39,7 @@ function MyNav({ handleSearch, setBooks }) {
                 </InputGroup>
 
               </Nav.Item>
-              <Nav.Item>
-              <Form.Select aria-label="Default select example" onChange={handleGenreChange}
-                  >
-                        <option value="History" >History</option>
-                        <option value="Fantasy" >Fantasy</option>
-                        <option value="Horror" >Horror</option>
-                        <option value="Romance" >Romance</option>
-                        <option value="Sci-Fi" >Sci-Fi</option>
-                    </Form.Select>
-              </Nav.Item>
+        
             </Nav>
           </Navbar.Collapse>
         </Container>
