@@ -14,6 +14,12 @@ function SingleBook({book, selected, handleSelected}) {/*
     }  */
 /* questo sotto va in AllTheBooks */
 /*     if(theme === 'light')  */
+const selBook = () => {
+  localStorage.setItem("selBook", JSON.stringify(book))
+  
+  
+}
+
 const {theme} = useContext (ThemeContext)
     return (
 
@@ -21,8 +27,8 @@ const {theme} = useContext (ThemeContext)
         <Card.Img variant="top" data-testid='manybooks' src={book.img} style={{ height: '18rem' }} className={selected === book.asin ? 'br-10 selected':'br-10'} onClick={() => {handleSelected(book.asin)}} />
         <Card.Body className="position-relative">
           <Card.Title className={theme === 'light' ? 'title' : 'text-white title'}>{book.title}</Card.Title>
-          <Card.Text className={theme === 'light' ? 'bordoo': 'bordo text-white' }>
-            {book.price}
+          <Card.Text className={theme === 'light' ? 'bordoo d-flex justify-content-between': 'bordo text-white d-flex justify-content-between' }>
+            <p>{book.price}</p><button type='button' onClick={selBook}>COMPRA</button>
           </Card.Text>
           <Button as={Link} to={`/bookDetails/${book.asin}`} variant="primary" className="w-50 position position-absolute">DETTAGLIO LIBRO</Button>
           {/* {selected && <CommentArea asin={book.asin} />} FIRSTTASKVEN12LUG*/} 
