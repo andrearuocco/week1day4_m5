@@ -6,10 +6,10 @@ import MyFooter from './Components/MyFooter';
 import AllTheBooks from './Components/pages/AllTheBooks';
 
 import history from './Components/data/history.json'
-import fantasy from './Components/data/fantasy.json'
+/* import fantasy from './Components/data/fantasy.json'
 import horror from './Components/data/horror.json'
 import romance from './Components/data/romance.json'
-import scifi from './Components/data/scifi.json'
+import scifi from './Components/data/scifi.json' */
 
 
 import {  useState, useEffect } from 'react'
