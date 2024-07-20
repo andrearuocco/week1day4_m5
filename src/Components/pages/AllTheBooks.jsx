@@ -8,7 +8,7 @@ import { useContext } from 'react';
 import { ThemeContext } from '../ThemeContextProvider';
 
 
-function AllTheBooks({ resultSearch }) {
+function AllTheBooks({ resultSearch, selected, setSelected }) {
     const {theme} = useContext (ThemeContext)
     /* logica elevata in App.jsx */
     /* 
@@ -24,7 +24,7 @@ function AllTheBooks({ resultSearch }) {
     */
     /* logica elevata in App.jsx */
 
-    const [selected, setSelected] = useState(null)
+    
     const handleSelected = (asin) => {
         if (selected === asin) {
             setSelected(null)

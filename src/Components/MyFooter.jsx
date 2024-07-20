@@ -8,10 +8,11 @@ import { Form } from 'react-bootstrap/';
 import {  useState } from 'react'
 import { Button } from 'bootstrap'
 
-function MyFooter({setBooks}) {
+function MyFooter({setBooks, setSelected}) {
     const [selectedGenre, setSelectedGenre] = useState('History')
     const handleGenreChange = (e) => {
       const genre = e.target.value
+      setSelected(false)
       setSelectedGenre(genre)
       switch (genre) {
           case 'History': 
@@ -50,12 +51,12 @@ function MyFooter({setBooks}) {
      
   
         <Form.Select aria-label="Default select example" onChange={handleGenreChange}
-            className='fixed-bottom d-flex'>
-               <option value="History" >History</option>
-                  <option value="Fantasy" >Fantasy</option>
-                  <option value="Horror" >Horror</option>
-                  <option value="Romance" >Romance</option>
-                  <option value="Sci-Fi" >Sci-Fi</option>
+            className='fixed-bottom w-50 margin-25 bg-success font-si bo-sh mb-1'>
+               <option value="History" className='text-danger text-center font-si'>History</option>
+                  <option value="Fantasy" className='text-danger text-center font-si'>Fantasy</option>
+                  <option value="Horror" className='text-danger text-center font-si' >Horror</option>
+                  <option value="Romance" className='text-danger text-center font-si'>Romance</option>
+                  <option value="Sci-Fi" className='text-danger text-center font-si'>Sci-Fi</option>
               </Form.Select>
 
     )

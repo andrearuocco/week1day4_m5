@@ -27,7 +27,7 @@ function SingleComment({comment, loadComments}) {
       })
       if(response.ok){
         setAlert({message: "Cancellato correttamente", success: true})
-        setTimeout(()=> {loadComments()}, 1000)
+        setTimeout(()=> {loadComments()}, 2000)
       }
       else {
         setAlert({message: "Errore nella cancellazione", success: false})
@@ -38,7 +38,7 @@ function SingleComment({comment, loadComments}) {
       setAlert({message: "Riprova più tardi.", success: false})
   
     }
-    setTimeout(()=> {setAlert(null)}, 2000)
+    setTimeout(()=> {setAlert(null)}, 4000)
 };
 
 const [isEditing, setIsEditing] = useState(false)
@@ -77,7 +77,7 @@ useEffect(()=>{
     })
     if(response.ok){
       setAlert({message: "Modificato correttamente", success: true})
-      loadComments()
+      setTimeout(()=> {loadComments()}, 3000)
       setIsEditing(false)
       //setformValue(initialFormEdit)
     }
@@ -88,7 +88,7 @@ useEffect(()=>{
   catch(error) {
     setAlert({message: "Commento Riprova più tardi", success: false})
   }
-  setTimeout(()=> {setAlert(null)}, 3000)
+  setTimeout(()=> {setAlert(null)}, 6000)
 }; 
 const handleChange = (ev => {
   setformValue({...formValue, [ev.target.name]:ev.target.value})

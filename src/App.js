@@ -23,6 +23,7 @@ function App() {
   const [books, setBooks] = useState(history)
   /* stato necessario per ricerca e function filter books */
   const [search, setSearch] = useState('')
+  const [selected, setSelected] = useState(null)
 
 
 /*   const {theme} = useContext(ThemeContext)
@@ -69,7 +70,7 @@ function App() {
           <Row>
             <Routes>
 
-              <Route path="/" element={<AllTheBooks resultSearch={resultSearch} /* selected={selected} handleSelected={handleSelected} */ />} />
+              <Route path="/" element={<AllTheBooks resultSearch={resultSearch} selected={selected} setSelected={setSelected}  /* selected={selected} handleSelected={handleSelected} */ />} />
               <Route path="/bookDetails/:asin" element={<BookDetails books={books} />} />
               <Route path="/nonTrovato" element={<NotFound />} />
 
@@ -78,7 +79,7 @@ function App() {
           </Row>
         </Container>
 
-         <MyFooter setBooks={setBooks} /> 
+         <MyFooter setBooks={setBooks} setSelected={setSelected} /> 
 
       </BrowserRouter>
     </ThemeContextProvider>
