@@ -5,10 +5,14 @@ import MyFooter from './Components/MyFooter';
 
 import AllTheBooks from './Components/pages/AllTheBooks';
 
-import books from './Components/data/history.json'
+import history from './Components/data/history.json'
+import fantasy from './Components/data/fantasy.json'
+import horror from './Components/data/horror.json'
+import romance from './Components/data/romance.json'
+import scifi from './Components/data/scifi.json'
 
 
-import {  useState } from 'react'
+import {  useState, useEffect } from 'react'
 import NotFound from './Components/pages/NotFound';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import BookDetails from './Components/pages/BookDetails';
@@ -16,7 +20,7 @@ import { ThemeContext, ThemeContextProvider } from './Components/ThemeContextPro
 
 
 function App() {
- 
+  const [books, setBooks] = useState(history)
   /* stato necessario per ricerca e function filter books */
   const [search, setSearch] = useState('')
 
@@ -24,7 +28,7 @@ function App() {
 /*   const {theme} = useContext(ThemeContext)
   console.log(theme) */
  
-  const [resultSearch, setresultSearch] = useState(books)
+  const [resultSearch, setresultSearch] = useState([])
   const handleSearch = (event) => {
     setSearch(event.target.value)
     const resultTemp = books.filter(book => {
@@ -32,7 +36,9 @@ function App() {
     })
     setresultSearch(resultTemp)
   }
-
+  useEffect(() => {
+    setresultSearch(books);
+}, [books]);
   /* const resultAsin = () => {
     books.map(book => {
        book.asin 
@@ -72,7 +78,7 @@ function App() {
           </Row>
         </Container>
 
-{/*         <MyFooter /> */}
+         <MyFooter setBooks={setBooks} /> 
 
       </BrowserRouter>
     </ThemeContextProvider>
