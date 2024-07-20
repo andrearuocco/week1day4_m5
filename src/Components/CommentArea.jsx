@@ -9,7 +9,7 @@ function CommentArea({asin}) {
         const response = await fetch(`https://striveschool-api.herokuapp.com/api/books/${asin}/comments/`,
             {
                 headers: {
-                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Njg5MWMxNzJiNWMyMDAwMTUyNzFmYjQiLCJpYXQiOjE3MjAyNjE2NTUsImV4cCI6MTcyMTQ3MTI1NX0.g2rDStXE1X97fb20GU7x7rOAa56qGgiB-FjyUF50kdU"
+                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjliYzFmYzMxZGI2MDAwMTUwYjliZDQiLCJpYXQiOjE3MjE0ODM3NzIsImV4cCI6MTcyMjY5MzM3Mn0.xFNOKL25iw3c__Ic-n21T4Vg2BJDpM8AiI1Out_mSzg"
                 }
             })
         const data = await response.json()
