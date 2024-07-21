@@ -39,9 +39,9 @@ function CommentList({comments, loadComments, loading}) {
         <span className="visually-hidden">Loading...</span>
     </Spinner>
       )
- */
+ *//* <h3 className='text-center'>I vostri commenti</h3> */
     return(
-        <div className="commentList"><h3 className='text-center'>I vostri commenti</h3>{comments.map(comment => <SingleComment key={comment._id} comment={comment} loadComments={loadComments}/>)}</div>  
+        <div className="commentList">{comments.map(comment => <SingleComment key={comment._id} comment={comment} loadComments={loadComments}/>)}</div>  
     )
 }
 

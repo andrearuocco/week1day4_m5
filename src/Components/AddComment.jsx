@@ -28,7 +28,7 @@ function AddComment({asin, loadComments}) {
                 }
             )
             if (response.ok) {
-                setTimeout(()=> {loadComments()}, 1000)
+                loadComments()
                 setformValue(initialFormState)
                 //alert("Commento aggiunto")
                 setAlert({message: "Commento aggiunto", success: true})
