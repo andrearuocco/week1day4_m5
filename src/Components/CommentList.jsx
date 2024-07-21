@@ -4,6 +4,7 @@ import { Spinner, Button } from "react-bootstrap";
 
 
 function CommentList({comments, loadComments, loading}) {
+  
     if (loading){
         return (<>
             <Button variant="danger" disabled>

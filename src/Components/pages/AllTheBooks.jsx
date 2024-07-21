@@ -3,45 +3,32 @@ import { Container, Col } from 'react-bootstrap';
 import Welcome from '../Welcome';
 import SingleBook from '../SingleBook'
 import CommentArea from '../CommentArea'; 
-import { useState } from 'react';
 import { useContext } from 'react';
 import { ThemeContext } from '../ThemeContextProvider';
 
 
 function AllTheBooks({ resultSearch, selected, setSelected }) {
     const {theme} = useContext (ThemeContext)
-    /* logica elevata in App.jsx */
-    /* 
-        const [search, setSearch] = useState('')
-        const [resultSearch, setresultSearch] = useState(books)
-        const handleSearch = (event) => {
-        setSearch(event.target.value)
-            const resultTemp = books.filter(book => {
-                return book.title.includes(event.target.value)
-            })
-        setresultSearch(resultTemp)
-        }
-    */
-    /* logica elevata in App.jsx */
-
     
-    const handleSelected = (asin) => {
+    // resultSearch è il risultato dei libri che verranno mostrati a video filtrati in base alla ricerca utente oppure no
+
+    const handleSelected = (asin) => { // attraverso selected rintraccio l'asin del libro necessario per i componenti SingleBook e CommentArea 
         if (selected === asin) {
             setSelected(null)
         }
         else {
             setSelected(asin)
         }
-   
-      } 
-    return (
+    }
+
+    return ( 
         <Container fluid>
             <Welcome />
             <Row>
-                <Col md={8} className={theme === 'light' ? '' : 'bg-dark bg-gradient'}>
-                    <Row>{resultSearch.map(book => <SingleBook key={book.asin} /* data-testid='manycard' */ book={book} selected={selected} handleSelected={handleSelected} />)}</Row>
+                <Col xs={7} md={8} className={theme === 'light' ? '' : 'bg-dark bg-gradient'}>
+                    <Row>{resultSearch.map(book => <SingleBook key={book.asin} book={book} selected={selected} handleSelected={handleSelected} />)}</Row>
                 </Col>
-                <Col md={4} className={theme === 'light' ? '' : 'bg-dark bg-gradient'}>
+                <Col xs={5} md={4} className={theme === 'light' ? '' : 'bg-dark bg-gradient'}>
                     {selected && <CommentArea asin={selected} />}
                 </Col>
             </Row>

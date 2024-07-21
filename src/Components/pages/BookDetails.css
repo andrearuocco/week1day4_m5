@@ -1,0 +1,24 @@
+.pad {
+    padding-left: 10% !important;
+    padding-right: 10% !important;
+}
+
+.border-rosso {
+    border-top: 3px solid red;
+    border-left: 3px solid red;
+    border-bottom: 3px solid red;
+}
+
+.border-rosso-t {
+    border-top: 3px solid red;
+    border-right: 3px solid red;
+    border-bottom: 3px solid red;
+}
+
+.radius-bd {
+    border-radius: 20px !important;
+}
+
+.font-style-bd {
+    font-family: monospace;
+}

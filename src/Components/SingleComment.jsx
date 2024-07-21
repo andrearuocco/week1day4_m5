@@ -1,20 +1,22 @@
 import { useEffect, useState } from 'react';
-import { Button, ListGroup, Form, InputGroup, Alert, Modal } from 'react-bootstrap';
+import { Button, ListGroup, Form, Alert, Modal } from 'react-bootstrap';
 import './SingleComment.css'
 
-
-
 function SingleComment({comment, loadComments}) {
- /*  const [show, setShow] = useState(true); */
- 
-  const [alert, setAlert] = useState(null)
-  const [alertTwo, setAlertTwo] = useState(false)
+  const [alert, setAlert] = useState(null) //setta i vari messaggi di alert sulla modifica e sulla cancellazione
+  const [alertTwo, setAlertTwo] = useState(false) //imposta un modal attraverso il proprio stato per chiedere se davvero si vuole cancellare
+
+  // fa vedere alert di cancellazione 
   const deleteFinally = () => {
     setAlertTwo(true)
-   }
-   const closeModal = () => {
+  }
+
+  // consente di chiudere il modale se l'utente non vuole cancellare più
+  const closeModal = () => {
     setAlertTwo(false)
-   }
+  }
+
+  // cancellazione definitiva
   const handleDelete = async () => {
     try {
       const response = await fetch(`https://striveschool-api.herokuapp.com/api/comments/${comment._id}`, {
@@ -39,19 +41,15 @@ function SingleComment({comment, loadComments}) {
   
     }
     setTimeout(()=> {setAlert(null)}, 4000)
-};
+  };
 
-const [isEditing, setIsEditing] = useState(false)
-/* const initialFormEdit = {
-  rate: comment.rate,
-  comment: comment.comment,
-  elementId: comment.elementId
-} */
-const [formValue, setformValue] = useState({})
+const [isEditing, setIsEditing] = useState(false) //stato per capire se l'utente sta modificando
+const [formValue, setformValue] = useState({}) //memoria per modifica dei commenti
 
 const editForm = () => {
   setIsEditing(!isEditing)
 }
+
 useEffect(()=>{
   const initialFormValue = {
     rate: comment.rate,
@@ -60,7 +58,8 @@ useEffect(()=>{
   }
   setformValue(initialFormValue)
 },[comment])
- const handleEdit = async () => {
+
+const handleEdit = async () => {
   if(formValue.rate > 5 || formValue.rate < 1) {
     setAlert({message: "Inserisci un rate da 1 a 5", success: false})
   return 
@@ -85,46 +84,46 @@ useEffect(()=>{
       setAlert({message: "Errore nella modifica", success: false})
     }
   }
+
   catch(error) {
     setAlert({message: "Commento Riprova più tardi", success: false})
   }
+
   setTimeout(()=> {setAlert(null)}, 6000)
 }; 
+
 const handleChange = (ev => {
   setformValue({...formValue, [ev.target.name]:ev.target.value})
 })
-    return(   <> {alert && <Alert key={alert.success?"success":"danger"} variant={alert.success?"success":"danger"} /* onClose={() => setShow(false)} dismissible */ className='mx-2'>{alert.message}</Alert>} 
-      <ListGroup data-testid='comment' className='listgroup'>
-        <ListGroup.Item className='d-flex justify-content-between'>
-          <ListGroup.Item>{comment.author}  </ListGroup.Item>
-          <ListGroup.Item>{isEditing ? <Form.Control className='mb-3 w-100' type="number" min="1" max="5" name="rate" onChange={handleChange} value={formValue.rate} /> : comment.rate}</ListGroup.Item>  
-        </ListGroup.Item>
-        <ListGroup.Item className='d-flex justify-content-between bor-bot'>     
-          <ListGroup.Item>{isEditing ? <Form.Control as="textarea" className='mb-3 w-100' aria-label="With textarea" name="comment" onChange={handleChange} value={formValue.comment} /> : comment.comment}</ListGroup.Item>
-          <ListGroup.Item className='d-flex'>
-            <ListGroup.Item><i class="fa-solid fa-trash" onClick={deleteFinally}></i></ListGroup.Item>
-            <ListGroup.Item> <i class="fa-solid fa-pen" onClick={() => { isEditing ? handleEdit() : editForm() }}></i></ListGroup.Item>
-          </ListGroup.Item>
-        </ListGroup.Item>
-        {alertTwo &&     <div
-      className="modal show"
-      style={{ display: 'block', position: 'initial' }}
-    >
-      <Modal.Dialog>
-    
-
-        <Modal.Body>
-          <h4>Sicuro di voler cancellare?</h4>
-        </Modal.Body>
-
-        <Modal.Footer>
-          <Button variant="success" onClick={closeModal}>CHIUDI</Button>
-          <Button variant="danger" onClick={()=>{handleDelete()}}>ELIMINA</Button>
-        </Modal.Footer>
-      </Modal.Dialog>
+// loadComments è guidato da una funzione setTimeout che rende maggiormente visibili gli alert impostati
+  return (<> 
+  {alert && <Alert key={alert.success ? "success" : "danger"} variant={alert.success ? "success" : "danger"} /* onClose={() => setShow(false)} dismissible */ className='mx-2'>{alert.message}</Alert>}
+  <ListGroup data-testid='comment' className='listgroup'>
+    <ListGroup.Item className='d-lg-flex justify-content-lg-between'>
+        <ListGroup.Item>{comment.author}  </ListGroup.Item>
+        <ListGroup.Item>{isEditing ? <Form.Control className='mb-3 w-100' type="number" min="1" max="5" name="rate" onChange={handleChange} value={formValue.rate} /> : comment.rate}</ListGroup.Item>
+    </ListGroup.Item>
+    <ListGroup.Item className='d-lg-flex justify-content-lg-between bor-bot'>
+      <ListGroup.Item>{isEditing ? <Form.Control as="textarea" className='mb-3 w-100' aria-label="With textarea" name="comment" onChange={handleChange} value={formValue.comment} /> : comment.comment }</ListGroup.Item>
+      <ListGroup.Item className='d-flex'>
+          <ListGroup.Item><i class="fa-solid fa-trash" onClick={deleteFinally}></i></ListGroup.Item>
+          <ListGroup.Item> <i class="fa-solid fa-pen" onClick={() => { isEditing ? handleEdit() : editForm() }}></i></ListGroup.Item>
+      </ListGroup.Item>
+    </ListGroup.Item>
+    {alertTwo && 
+    <div className="modal show" style={{ display: 'block', position: 'initial' }}>
+        <Modal.Dialog>
+          <Modal.Body>
+            <h4>Sicuro di voler cancellare?</h4>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="success" onClick={closeModal}>CHIUDI</Button>
+            <Button variant="danger" onClick={() => { handleDelete() }}>ELIMINA</Button>
+          </Modal.Footer>
+        </Modal.Dialog>
     </div>}
-      </ListGroup></>
-    )
+  </ListGroup>
+  </>)
 }
 
 export default SingleComment

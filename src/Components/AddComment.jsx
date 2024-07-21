@@ -28,10 +28,11 @@ function AddComment({asin, loadComments}) {
                 }
             )
             if (response.ok) {
-                loadComments()
+                setTimeout(()=> {loadComments()}, 1000)
                 setformValue(initialFormState)
                 //alert("Commento aggiunto")
                 setAlert({message: "Commento aggiunto", success: true})
+                
             } else { //alert("Inserisci un rate da 1 a 5")
                 setAlert({message: "Inserisci un rate da 1 a 5", success: false})}
         }
@@ -39,7 +40,7 @@ function AddComment({asin, loadComments}) {
            //alert("Riprova più tardi.")
            setAlert({message: "Riprova più tardi.", success: false})
         }
-       setTimeout(()=> {setAlert(null)}, 3000)
+       setTimeout(()=> {setAlert(null)}, 2000)
     }
     
     return (<> {alert && <Alert key={alert.success?"success":"danger"} variant={alert.success?"success":"danger"}>{alert.message}</Alert>} 

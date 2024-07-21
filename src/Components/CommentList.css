@@ -1,6 +1,7 @@
 .commentList {
-    max-height: 50vh;
+    max-height: 40vh;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .commentList::-webkit-scrollbar {
