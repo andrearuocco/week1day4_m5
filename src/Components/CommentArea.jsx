@@ -4,7 +4,7 @@ import CommentList from "./CommentList"
 import './CommentArea.css'
 
 function CommentArea({asin}) {
-    const [comments, setComments] = useState([ ,])
+    const [comments, setComments] = useState([ , ])
     const [loading, setLoading] = useState(false)
     const loadComments = async () => {
         setLoading(true)

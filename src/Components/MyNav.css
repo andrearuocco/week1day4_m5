@@ -5,3 +5,7 @@
 .bo-gr {
     border: 3px solid green !important;
 }
+
+a {
+    text-decoration: none !important; 
+}

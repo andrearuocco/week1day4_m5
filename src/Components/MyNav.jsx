@@ -5,6 +5,7 @@ import { Form, InputGroup, Button } from 'react-bootstrap';
 import './MyNav.css'
 import { useContext } from 'react';
 import { ThemeContext } from './ThemeContextProvider';
+import { Link } from 'react-router-dom';
 
 function MyNav({ handleSearch }) {
     const {theme, toggleTheme} = useContext (ThemeContext)
@@ -19,9 +20,9 @@ function MyNav({ handleSearch }) {
             <Nav className="me-auto">
              
               <Nav.Item class='me-4 mb-2 mb-lg-0'><Button variant="success" onClick={() => { toggleTheme() }}>Set Theme</Button></Nav.Item>
-              <Nav.Item href="#" className="text-underline-none pe-3 mb-2 mb-lg-0">Home</Nav.Item>
-              <Nav.Item href="#" className="text-underline-none pe-3 mb-2 mb-lg-0">About</Nav.Item>
-              <Nav.Item href="#" className="text-underline-none pe-3 mb-2 mb-lg-0">Browse</Nav.Item>
+              <Nav.Item as={Link} to='/' className="text-underline-none pe-3 mb-2 mb-lg-0">Home</Nav.Item>
+              <Nav.Item className="text-underline-none pe-3 mb-2 mb-lg-0">About</Nav.Item>
+              <Nav.Item className="text-underline-none pe-3 mb-2 mb-lg-0">Browse</Nav.Item>
               <Nav.Item className="mb-2 mb-lg-0">
                 
                 <InputGroup className="mb-3 w-40">
